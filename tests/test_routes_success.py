@@ -1,5 +1,6 @@
 from unittest.mock import patch
 
+
 def test_get_all_data_success(client):
     mock_data = [{"id": 1, "title": "mock"}]
     with patch("app.services.requests.get") as mock_get:
@@ -7,6 +8,7 @@ def test_get_all_data_success(client):
         response = client.get("/data/")
     assert response.status_code == 200
     assert response.json() == mock_data
+
 
 def test_get_data_by_id_success(client):
     mock_item = {"id": 1, "title": "mock item"}
@@ -16,6 +18,7 @@ def test_get_data_by_id_success(client):
         response = client.get("/data/1")
     assert response.status_code == 200
     assert response.json() == mock_item
+
 
 def test_create_data_success(client):
     mock_response = {"id": 101, "title": "new item"}
